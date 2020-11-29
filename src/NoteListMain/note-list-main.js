@@ -16,12 +16,14 @@ export default class NoteListMain extends Component {
     static contextType = notefulContext;
 
     render () {
-        const {folderID} = this.props.match.params;
+        const folderID = this.props.match.params.folder_id;
         const {notes=[]} = this.context;
         const notesForFolder = findNotesForFolder(notes, folderID);
         
 
-        
+        console.log(notes, 'notes')
+        console.log(folderID, 'folderId')
+        console.log(this.props.match.params)
         console.log(notesForFolder ,'notes4')
    
     

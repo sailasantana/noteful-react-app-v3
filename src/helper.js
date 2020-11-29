@@ -10,8 +10,7 @@ notes.find(note => note.id === noteID)
 
 //function that retrieves notes associated with a particular folderID
 export  const findNotesForFolder = (notes, folderID) => {
-    console.log(notes,"notes")
-    console.log(folderID, "folder")
+ 
     return(
         (!folderID)
        ? notes
