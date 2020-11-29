@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {NavLink, Link} from 'react-router-dom';
 import CircleButton from '../Circle-button/circle-button';
 import notefulContext from '../noteful-context';
-import {countNotesForFolder} from '../helper';
 import './note-list-nav.css';
+import { findFolder, findNote, findNotesForFolder} from '../helper'
 
 export default class NoteListNav extends Component {
     static contextType = notefulContext; 
@@ -16,15 +16,11 @@ export default class NoteListNav extends Component {
                 
                 <ul className="NoteListNav__list">
                     {folders.map(folder =>
-                        <li key={folder.folder_id}>
+                        <li key={folder.folderId}>
                             <NavLink
                                 className="NoteListNav__folder-link"
                                 to={`/folders/${folder.id}`}>
-                            
-                                <span className="NoteListNav__num-notes">
-                                    {countNotesForFolder(notes, folder.id)}
-                                </span>
-                                {folder.folder_name}
+                                {folder.name}
                             </NavLink>
                         </li>
                     )}
@@ -36,8 +32,6 @@ export default class NoteListNav extends Component {
                         to='/add-folder'
                         type='button'
                         className='NoteListNav__add-folder-button'>
-                        
-                      
                         <br/>
                         Folder
                     </CircleButton>

@@ -67,7 +67,7 @@ export default class AddFolder extends Component {
         e.preventDefault();
         
         const folder = {
-            folder_name: e.target['folder-name-input'].value
+            name: e.target['folder-name-input'].value
         };
 
         fetch(`${config.API_ENDPOINT}/folders`, {
@@ -107,7 +107,7 @@ export default class AddFolder extends Component {
                                 </label>
 
                                 <input type="text" id="folder-name-input" onChange={e => this.updateFolderName(e.target.value)}/>
-                                <ValidationError hasError={!this.state.validName} message={this.state.validationMessages.name}/>
+                                <ErrorBoundary hasError={!this.state.validName} message={this.state.validationMessages.name}/>
 
                             </div>
 

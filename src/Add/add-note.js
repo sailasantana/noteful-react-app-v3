@@ -73,7 +73,7 @@ export default class AddNote extends Component {
         e.preventDefault();
 
         const newNote = {
-            folder_id: e.target['note-folder-id'].value,
+            folderId: e.target['note-folder-id'].value,
             name: e.target['note-name'].value,
             content: e.target['note-content'].value,
             modified: new Date(),
@@ -119,7 +119,7 @@ export default class AddNote extends Component {
                         </label>
 
                         <input type="text" id="note-name-input" name="note-name" onChange={e => this.updateName(e.target.value)}/>
-                        <ValidationError message={this.validateName()}/>
+                        <ErrorBoundary message={this.validateName()}/>
 
                     </div>
 
@@ -130,7 +130,7 @@ export default class AddNote extends Component {
                         </label>
 
                         <textarea id="note-content-input" name="note-content" onChange={e => this.updatedContent(e.target.value)}/>
-                        <ValidationError message={this.validateContent()}/>
+                        <ErrorBoundary message={this.validateContent()}/>
 
                     </div>
 
@@ -143,11 +143,11 @@ export default class AddNote extends Component {
                             
                             {folders.map(folder => 
                                 <option key={folder.id} value={folder.id} onChange={e => this.updateFolderSelect(e.target.value)}>
-                                {folder.folder_name}
+                                {folder.name}
                                 </option>
                                 )}
                             
-                            <ValidationError message={this.validateFolderName()}/>
+                            <ErrorBoundary message={this.validateFolderName()}/>
                         </select>
                     </div>
 

@@ -1,15 +1,24 @@
 
-export const findFolder = (folders=[], folder_id) =>
-folders.find(folder => folder.folder_id === folder_id)
+//function to match up user folderID input with what's in DummyStore.js
+export  const findFolder = (folders, folderID) =>
+folders.find(folder => folder.id === folderID)
 
-export const findNote = (notes=[], id) =>
-notes.find(note => note.id+'' === id)
+//function that does the same thing as findFodler but for notes
+export  const findNote = (notes, noteID) =>
 
-export const getNotesForFolder = (notes=[], folder_id) => (
-(!folder_id)
-  ? notes
-  : notes.filter(note => note.folder_id+'' === folder_id)
-)
+notes.find(note => note.id === noteID)
 
-export const countNotesForFolder = (notes=[], folder_id) =>
-notes.filter(note => note.folder_id === folder_id).length
+//function that retrieves notes associated with a particular folderID
+export  const findNotesForFolder = (notes, folderID) => {
+    console.log(notes,"notes")
+    console.log(folderID, "folder")
+    return(
+        (!folderID)
+       ? notes
+       : notes.filter(note => note.folderId === folderID)
+    )
+    
+}
+
+
+

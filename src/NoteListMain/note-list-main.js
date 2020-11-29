@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import Note from '../Note/note';
 import CircleButton from '../Circle-button/circle-button';
 import notefulContext from '../noteful-context';
-import {getNotesForFolder} from '../helper';
+import {findNotesForFolder} from '../helper';
 import './note-list-main.css';
 
 export default class NoteListMain extends Component {
@@ -16,9 +16,14 @@ export default class NoteListMain extends Component {
     static contextType = notefulContext;
 
     render () {
-        const {folder_id} = this.props.match.params;
+        const {folderID} = this.props.match.params;
         const {notes=[]} = this.context;
-        const notesForFolder = getNotesForFolder(notes, folder_id);
+        const notesForFolder = findNotesForFolder(notes, folderID);
+        
+
+        
+        console.log(notesForFolder ,'notes4')
+   
     
         return (
             <section className="NoteListMain">
