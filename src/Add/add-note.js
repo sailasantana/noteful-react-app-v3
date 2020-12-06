@@ -4,6 +4,7 @@ import NotefulForm from '../NotefulForm/noteful-form';
 import ErrorBoundary from '../error-boundary';
 import config from '../config';
 import './add-note.css';
+import PropTypes from 'prop-types'
 
 export default class AddNote extends Component {
     static defaultProps = {
@@ -167,3 +168,6 @@ export default class AddNote extends Component {
         );
     }
 }
+
+AddNote.propTypes = 
+{ history: PropTypes.string }

@@ -75,8 +75,4 @@ export default class Note extends Component {
     }
   }
 
-  Note.propTypes = {
-    id: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    modified: PropTypes.string
-  }
+//proptype for onDelete not needed. I am using context here.

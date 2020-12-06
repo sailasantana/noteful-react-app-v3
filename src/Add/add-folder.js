@@ -4,6 +4,8 @@ import notefulContext from '../noteful-context';
 import config from '../config';
 import ErrorBoundary from '../error-boundary';
 import './add-folder.css';
+import PropTypes from 'prop-types';
+
 
 export default class AddFolder extends Component {
    static defaultProps = {
@@ -124,3 +126,7 @@ export default class AddFolder extends Component {
         );
     }
 }
+
+
+AddFolder.propTypes = 
+{ history: PropTypes.string }
