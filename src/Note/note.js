@@ -38,7 +38,7 @@ export default class Note extends Component {
     }
 
     render () {  
-      const {name, id, modified} = this.props; 
+      const {name , id, modified} = this.props; 
 
       return (
         <div className='Note'>
@@ -74,5 +74,11 @@ export default class Note extends Component {
       )
     }
   }
+
+  Note.propTypes = 
+  { name: PropTypes.string,
+    modified: PropTypes.string,
+    id:PropTypes.string }
+
 
 //proptype for onDelete not needed. I am using context here.

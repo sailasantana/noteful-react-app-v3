@@ -47,5 +47,5 @@ export default class NotePageNav extends Component {
 }
 
 NotePageNav.propTypes = 
-{ match: PropTypes.string,
-  history: PropTypes.string  }
+{ match: PropTypes.object,
+  history: PropTypes.object  }

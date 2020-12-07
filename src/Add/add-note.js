@@ -123,7 +123,7 @@ export default class AddNote extends Component {
                         <ErrorBoundary message={this.validateName()}/>
 
                     </div>
-
+                    
                     <div className="field">
 
                         <label htmlFor="note-content-input">
@@ -134,11 +134,13 @@ export default class AddNote extends Component {
                         <ErrorBoundary message={this.validateContent()}/>
 
                     </div>
-
                     <div className="field">
+                    
+                    
                         <label htmlFor="note-folder-select">
                             Folder:
                         </label>
+                        
 
                         <select id="note-folder-seiect" name="note-folder-id">
                             
@@ -148,9 +150,11 @@ export default class AddNote extends Component {
                                 </option>
                                 )}
                             
-                            <ErrorBoundary message={this.validateFolderName()}/>
                         </select>
-                    </div>
+                        </div>
+                    <ErrorBoundary message={this.validateFolderName()}/>
+
+                   
 
                     <div className="buttons">
                         <button
@@ -170,4 +174,5 @@ export default class AddNote extends Component {
 }
 
 AddNote.propTypes = 
-{ history: PropTypes.string }
+{ history: PropTypes.object }
+

@@ -62,4 +62,4 @@ export default class NoteListMain extends Component {
 
 
 NoteListMain.propTypes = 
-{ match: PropTypes.string }
+{ match: PropTypes.object }

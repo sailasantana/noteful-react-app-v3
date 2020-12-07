@@ -3,7 +3,7 @@ import {NavLink, Link} from 'react-router-dom';
 import CircleButton from '../Circle-button/circle-button';
 import notefulContext from '../noteful-context';
 import './note-list-nav.css';
-import { findFolder, findNote, findNotesForFolder} from '../helper'
+//import { findFolder, findNote, findNotesForFolder} from '../helper'
 
 export default class NoteListNav extends Component {
     static contextType = notefulContext; 
@@ -15,8 +15,8 @@ export default class NoteListNav extends Component {
             <div className="NoteListNav">
                 
                 <ul className="NoteListNav__list">
-                    {folders.map(folder =>
-                        <li key={folder.folderId}>
+                    {folders.map((folder,index) =>
+                        <li key={index}>
                             <NavLink
                                 className="NoteListNav__folder-link"
                                 to={`/folders/${folder.id}`}>

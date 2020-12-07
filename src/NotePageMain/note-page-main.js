@@ -49,5 +49,5 @@ export default class NotePageMain extends Component {
 
 
 NotePageMain.propTypes = 
-{ match: PropTypes.string,
-  history: PropTypes.string  }
+{ match: PropTypes.object,
+  history: PropTypes.object  }

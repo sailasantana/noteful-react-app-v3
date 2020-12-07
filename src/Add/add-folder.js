@@ -129,4 +129,4 @@ export default class AddFolder extends Component {
 
 
 AddFolder.propTypes = 
-{ history: PropTypes.string }
+{ history: PropTypes.object }
