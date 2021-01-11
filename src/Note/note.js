@@ -14,9 +14,10 @@ export default class Note extends Component {
 
     handleClickDelete = e => {
       e.preventDefault();
-      const id = this.props.id;
+      const note_id = this.props.id;
+      console.log(note_id)
 
-      fetch(`${config.API_ENDPOINT}/notes/${id}`, {
+      fetch(`${config.API_ENDPOINT}/api/notes/${note_id}`, {
         method: 'DELETE',
         headers: {
           'content-type': 'application/json'
@@ -29,8 +30,8 @@ export default class Note extends Component {
         return null;
       })
       .then(() => {
-        this.context.deleteNote(id);
-        this.props.onDeleteNote(id);
+        this.context.deleteNote(note_id);
+        this.props.onDeleteNote(note_id);
       })
       .catch(error => {
         console.error({error});

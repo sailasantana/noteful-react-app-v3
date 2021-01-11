@@ -69,10 +69,10 @@ export default class AddFolder extends Component {
         e.preventDefault();
         
         const folder = {
-            name: e.target['folder-name-input'].value
+            folder_name: e.target['folder-name-input'].value
         };
 
-        fetch(`${config.API_ENDPOINT}/folders`, {
+        fetch(`${config.API_ENDPOINT}/api/folders`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -87,7 +87,7 @@ export default class AddFolder extends Component {
         })
         .then (folder => {
             this.context.addFolder(folder);
-            this.props.history.push(`/folders/${folder.cid}`)
+            this.props.history.push(`/folders/${folder.id}`)
         })
         .catch (err => alert(err));
     };
@@ -108,7 +108,7 @@ export default class AddFolder extends Component {
                                     Name
                                 </label>
 
-                                <input type="text" id="folder-name-input" onChange={e => this.updateFolderName(e.target.value)}/>
+                                <input type="text" id="folder-name-input" onChange={e => this.updateFolderName(e.target.value)} required/>
                                 <ErrorBoundary hasError={!this.state.validName} message={this.state.validationMessages.name}/>
 
                             </div>

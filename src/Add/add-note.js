@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import notefulContext from '../noteful-context';
 import NotefulForm from '../NotefulForm/noteful-form';
-import ErrorBoundary from '../error-boundary';
+//import ErrorBoundary from '../error-boundary';
 import config from '../config';
 import './add-note.css';
 import PropTypes from 'prop-types'
+import ValidationError from '../ValidationError';
+
 
 export default class AddNote extends Component {
     static defaultProps = {
@@ -74,13 +76,13 @@ export default class AddNote extends Component {
         e.preventDefault();
 
         const newNote = {
-            folderId: e.target['note-folder-id'].value,
+            folder_id: e.target['note-folder-id'].value,
             name: e.target['note-name'].value,
             content: e.target['note-content'].value,
             modified: new Date(),
         };
 
-        fetch(`${config.API_ENDPOINT}/notes`, {
+        fetch(`${config.API_ENDPOINT}/api/notes`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -104,6 +106,7 @@ export default class AddNote extends Component {
 
     render() {
         const {folders = []} = this.context;
+        console.log(folders)
 
         return (
             <section className="AddNote">
@@ -119,8 +122,8 @@ export default class AddNote extends Component {
                             Note Title:
                         </label>
 
-                        <input type="text" id="note-name-input" name="note-name" onChange={e => this.updateName(e.target.value)}/>
-                        <ErrorBoundary message={this.validateName()}/>
+                        <input type="text" id="note-name-input" name="note-name" onChange={e => this.updateName(e.target.value)} required/>
+                        <ValidationError message={this.validateName()}/>
 
                     </div>
                     
@@ -130,8 +133,8 @@ export default class AddNote extends Component {
                             Content:
                         </label>
 
-                        <textarea id="note-content-input" name="note-content" onChange={e => this.updatedContent(e.target.value)}/>
-                        <ErrorBoundary message={this.validateContent()}/>
+                        <textarea id="note-content-input" name="note-content" onChange={e => this.updatedContent(e.target.value)} required/>
+                        <ValidationError message={this.validateContent()}/>
 
                     </div>
                     <div className="field">
@@ -146,13 +149,13 @@ export default class AddNote extends Component {
                             
                             {folders.map(folder => 
                                 <option key={folder.id} value={folder.id} onChange={e => this.updateFolderSelect(e.target.value)}>
-                                {folder.name}
+                                {folder.folder_name}
                                 </option>
                                 )}
                             
                         </select>
                         </div>
-                    <ErrorBoundary message={this.validateFolderName()}/>
+                    <ValidationError message={this.validateFolderName()}/>
 
                    
 

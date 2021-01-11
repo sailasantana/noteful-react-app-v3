@@ -22,10 +22,7 @@ export default class NoteListMain extends Component {
         const {notes=[]} = this.context;
         const notesForFolder = findNotesForFolder(notes, folderID);
         
-
-        console.log(notes, 'notes')
-        console.log(folderID, 'folderId')
-        console.log(this.props.match.params)
+       // console.log(this.props.match.params)
         console.log(notesForFolder ,'notes4')
    
     
